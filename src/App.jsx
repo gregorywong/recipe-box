@@ -2,23 +2,7 @@ import React from 'react';
 
 export default class App extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      inputText: startingText,
-      displayText: startingText
-    }
-  }
-
-  updateText(text) {
-    this.setState({
-      inputText: text,
-      displayText: text
-    });
-  }
-
   render() {
-    const {inputText, displayText} = this.state;
     return (
       <div>
         <header className="text-center">
