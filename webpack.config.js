@@ -42,7 +42,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'React Bootstrap Template',
+      title: 'Recipe Box',
       /*
       minify: {
           collapseWhitespace: true

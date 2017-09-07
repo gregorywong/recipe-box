@@ -1,5 +1,5 @@
-# react-bootstrap-template
-A webpack project with working React and Bootstrap configurations.
+# recipe-box
+A recipe box created for FreeCodeCamp.
 
 
 ## How to use the files?

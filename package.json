@@ -1,7 +1,7 @@
 {
-  "name": "react-bootstrap-template",
+  "name": "recipe-box",
   "version": "1.0.0",
-  "description": "Webpack project with working React and Bootstrap configurations.",
+  "description": "Recipe box created for FreeCodeCamp.",
   "main": "index.ejs",
   "scripts": {
     "dev": "webpack-dev-server",
