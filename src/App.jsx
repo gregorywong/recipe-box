@@ -1,22 +1,76 @@
 import React from 'react';
+import Recipe from './Recipe.jsx';
+
+const image = require('./images/hat.svg');
+
+const fakeLocalStorage = [
+  {
+    name: 'Hamburgers',
+    ingredients: 'Buns,Meat,Lettuce'
+  },
+  {
+    name: 'French Fries',
+    ingredients: 'Potato,Oil,Ketchup'
+  },
+  {
+    name: 'Salad',
+    ingredients: 'Salad,Salad Dressing'
+  },
+  {
+    name: 'Spamburgers',
+    ingredients: 'Buns,Spam Meat,Lettuce'
+  },
+  {
+    name: 'Super Mario Salad',
+    ingredients: 'Salad,Salad Dressing,Cherry tomatoes,Pipe Dreams'
+  },
+  {
+    name: 'Invisible Salad',
+    ingredients: ',,,'
+  },
+  {
+    name: 'Empty Stomach',
+    ingredients: ''
+  },
+  {
+    name: 'Disneyland Burger with Extra Large Fries',
+    ingredients: 'Buns,Meat,Lettuce'
+  },
+  {
+    name: 'Coke',
+    ingredients: 'Sugar,Water'
+  }
+];
 
 export default class App extends React.Component {
 
   render() {
     return (
       <div>
-        <header className="text-center">
-          <h1 className="py-4">React Bootstrap Template</h1>
-          <div className="mx-2 pb-2 mb-4">
-            <p>This is a working webpack project with React and Bootstrap configurations.</p>
+        <header className="text-center py-1">
+          <h1 className="py-3 mb-0">
+            <img src={image} className="chef-hat" />
+            <span className="px-3">RECIPE BOX</span>
+            <img src={image} className="chef-hat hidden-xs-down" />
+          </h1>
+          <div className="mx-2 pb-2">
+            Created by <a href="http://www.gregwong.me" className='text-danger'>Greg Wong</a>
           </div>
         </header>
-        <div className="container">
-          <h2>Hello World!</h2>
-          <div>Some content goes here.</div>
-          <br/>
-          <h2>Some Other Title</h2>
-          <div>Blah blah blah.</div>
+        <div className="row justify-content-center">
+          <div className="col-12 text-center">
+            <button className="btn btn-primary">Add Item</button>
+          </div>
+        </div>
+        <hr className="mb-0" />
+        <div className="container box">
+          <div className="row pt-4">
+            {
+              fakeLocalStorage.map((recipe, i) => {
+                return <Recipe {...recipe} key={i} recipeKey={i}/>;
+              })
+            }
+          </div>
         </div>
       </div>
     )

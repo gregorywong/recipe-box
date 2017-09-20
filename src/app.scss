@@ -1,15 +1,43 @@
-body {
-  background-color: #EEE;
+body, header {
+  background-color: #FCD094!important;
 } 
 
+html, body, #root, [data-reactroot] {
+  height: 100% !important;
+}
+
 header {
-  background-color: gainsboro;
+  color: #823D0C;
 }
 
-.input-pane {
-  font-family: Courier New, Courier, monospace;
+// added because bootstrap isn't compiling properly
+.hidden-xs-down {
+  @media (max-width: 544px) {
+    display: none!important;
+  }
 }
 
-.output-pane {
-  font-size: 14px;
+.chef-hat {
+  width: 50px;
+  fill-opacity: 0.5;
+}
+
+h1 {
+  font-family: 'Frijole'!important;
+}
+
+.box {
+  background-color: #F6DBB5!important;
+}
+
+.recipe-card {
+  background-color: #D1AA93!important;
+}
+
+.recipe-title {
+  color: #7A3609!important;
+}
+
+.ingredients-list .list-group-item {
+  background-color: #F1D9C9!important;
 }
