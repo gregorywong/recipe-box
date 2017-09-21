@@ -56,20 +56,34 @@ export default class App extends React.Component {
     }
   }
 
+  modifyRecipe = (recipeNum) => {
+    return (newName, newIngredients) => {
+      recipes = this.state.recipes.slice();
+      recipes[recipeNum] = {
+        name: newName,
+        ingredients: newIngredients
+      };
+      this.updateRecipes(recipes);
+    }
+  }
+
   deleteRecipe = (recipeNum) => {
     return () => {
       const { recipes } = this.state;
       recipes.splice(recipeNum, 1); // remove one recipe at index recipeNum
-      this.setState({
-        recipes
-      }, () => {
-        window.localStorage.setItem(localStorageName, JSON.stringify(recipes));
-      })
+      this.updateRecipes(recipes);
     }
   }
 
+  updateRecipes = (recipes) => {
+    this.setState({
+      recipes
+    }, () => {
+      window.localStorage.setItem(localStorageName, JSON.stringify(recipes));
+    })
+  }
   render() {
-    const {recipes} = this.state;
+    const { recipes } = this.state;
     return (
       <div>
         <header className="text-center py-1">
@@ -99,6 +113,7 @@ export default class App extends React.Component {
                   {...recipe}
                   key={i}
                   recipeKey={i}
+                  modifyRecipe={this.modifyRecipe(i)}
                   deleteRecipe={this.deleteRecipe(i)}
                 />;
               })

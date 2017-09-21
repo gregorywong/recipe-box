@@ -9,11 +9,12 @@ export default class Recipe extends React.Component {
 
   constructor(props) {
     super(props);
+    const {name, ingredients} = props;
     this.state = {
       editing: false,
       collapsed: defaultCollapsed,
-      newName: '',
-      newIngredients: ''
+      newName: name,
+      newIngredients: ingredients
     }
   }
 
@@ -23,15 +24,25 @@ export default class Recipe extends React.Component {
     })
   }
   
-  toggleEditing = () => {
+  startEditing = () => {
     this.setState({
-      editing: !this.state.editing,
+      editing: true,
       collapsed: defaultCollapsed
     })
   }
 
+  cancelEditing = () => {
+    const {name, ingredients} = this.props;
+    this.setState({
+      editing: false,
+      collapsed: defaultCollapsed,
+      newName: name,
+      newIngredients: ingredients
+    })
+  }
+
   render() {
-    const { name, ingredients, recipeKey, deleteRecipe } = this.props;
+    const { name, ingredients, recipeKey, modifyRecipe, deleteRecipe } = this.props;
     const {editing, collapsed, newName, newIngredients} = this.state;
     const recipeCardState = collapsed ? 'recipe-card-collapsed' : 'recipe-card-showing';
     return (
@@ -54,7 +65,8 @@ export default class Recipe extends React.Component {
           <RecipeFooter
             editing={editing}
             recipeKey={recipeKey}
-            toggleEditing={this.toggleEditing}
+            startEditing={this.startEditing}
+            cancelEditing={this.cancelEditing}
             deleteRecipe={deleteRecipe}
           />
 
