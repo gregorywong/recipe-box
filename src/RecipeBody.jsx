@@ -4,7 +4,7 @@ const RecipeBody = (props) => {
   const { editing, ingredients, recipeKey } = props;
   if (editing) {
     return (
-      <ul className='ingredients-list list-group list-group-flush' id={`recipe${recipeKey}`}>
+      <ul className='ingredients-list list-group list-group-flush'>
         <li className='list-group-item'>
           <input type="text" className="p-2 w-100" value={ingredients} />
         </li>
