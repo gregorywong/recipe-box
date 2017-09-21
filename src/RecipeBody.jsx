@@ -14,20 +14,22 @@ const RecipeBody = (props) => {
   }
   else {
     return (
-      <ul className='ingredients-list list-group list-group-flush collapse show' id={`recipe${recipeID}`}>
-        {
-          ingredients.trim() === '' &&
-          <li className='list-group-item text-danger'>No ingredients!</li>
-        }
-        {
-          ingredients !== '' &&
-          React.Children.map(ingredients.split(','), ingredient => {
-            return (
-              <li className='list-group-item'>{ingredient}</li>
-            )
-          })
-        }
-      </ul>
+      <div id={`recipe${recipeID}`} className='collapse show'>
+        <ul className='ingredients-list list-group list-group-flush' >
+          {
+            ingredients.trim() === '' &&
+            <li className='list-group-item text-danger'>No ingredients!</li>
+          }
+          {
+            ingredients !== '' &&
+            React.Children.map(ingredients.split(','), ingredient => {
+              return (
+                <li className='list-group-item'>{ingredient}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
     )
   }
 }
