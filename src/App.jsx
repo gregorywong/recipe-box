@@ -8,48 +8,23 @@ const localStorageName = "_gregorywong_recipe-box";
 let dummyData = [
   {
     id: '0',
-    name: 'Hamburgers',
-    ingredients: 'Buns,Meat,Lettuce'
-  },
-  {
-    id: '1',
-    name: 'French Fries',
-    ingredients: 'Potato,Oil,Ketchup'
-  },
-  {
-    id: '2',
-    name: 'Salad',
-    ingredients: 'Salad,Salad Dressing'
-  },
-  {
-    id: '3',
     name: 'Spamburgers',
     ingredients: 'Buns,Spam Meat,Lettuce'
   },
   {
-    id: '4',
-    name: 'Super Mario Salad',
-    ingredients: 'Salad,Salad Dressing,Cherry tomatoes,Pipe Dreams'
-  },
-  {
-    id: '5',
+    id: '1',
     name: 'Invisible Salad',
     ingredients: ',,,'
   },
   {
-    id: '6',
+    id: '2',
+    name: 'Super Mario Salad',
+    ingredients: 'Salad,Salad Dressing,Cherry Tomatoes,Pipe Dreams'
+  },
+  {
+    id: '3',
     name: 'Empty Stomach',
     ingredients: ''
-  },
-  {
-    id: '7',
-    name: 'Disneyland Burger with Extra Large Fries',
-    ingredients: 'Buns,Meat,Lettuce'
-  },
-  {
-    id: '8',
-    name: 'Coke',
-    ingredients: 'Sugar,Water'
   }
 ];
 
