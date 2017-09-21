@@ -3,7 +3,9 @@ import Recipe from './Recipe.jsx';
 
 const image = require('./images/hat.svg');
 
-var fakeLocalStorage = [
+const localStorageName = "_gregorywong_recipe-box";
+
+var dummyData = [
   {
     name: 'Hamburgers',
     ingredients: 'Buns,Meat,Lettuce'
@@ -46,8 +48,11 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
+    const data = JSON.parse(window.localStorage.getItem(localStorageName));
     this.state = {
-      recipes: fakeLocalStorage
+      // recipes: (data !== null) ? data : dummyData
+      // testing:
+      recipes: dummyData
     }
   }
 
@@ -58,8 +63,7 @@ export default class App extends React.Component {
       this.setState({
         recipes
       }, () => {
-        fakeLocalStorage = recipes;
-        console.log(fakeLocalStorage)
+        window.localStorage.setItem(localStorageName, JSON.stringify(recipes));
       })
     }
   }
@@ -93,6 +97,10 @@ export default class App extends React.Component {
               recipes.map((recipe, i) => {
                 return <Recipe {...recipe} key={i} recipeKey={i} deleteRecipe={this.deleteRecipe(i)} />;
               })
+            }
+            {
+              recipes.length === 0 &&
+              <h2 className="w-100 p-5 text-danger text-center">No items yet! Try adding one!</h2>
             }
           </div>
         </div>
