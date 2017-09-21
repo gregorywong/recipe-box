@@ -5,44 +5,55 @@ const image = require('./images/hat.svg');
 
 const localStorageName = "_gregorywong_recipe-box";
 
-var dummyData = [
+let dummyData = [
   {
+    id: '0',
     name: 'Hamburgers',
     ingredients: 'Buns,Meat,Lettuce'
   },
   {
+    id: '1',
     name: 'French Fries',
     ingredients: 'Potato,Oil,Ketchup'
   },
   {
+    id: '2',
     name: 'Salad',
     ingredients: 'Salad,Salad Dressing'
   },
   {
+    id: '3',
     name: 'Spamburgers',
     ingredients: 'Buns,Spam Meat,Lettuce'
   },
   {
+    id: '4',
     name: 'Super Mario Salad',
     ingredients: 'Salad,Salad Dressing,Cherry tomatoes,Pipe Dreams'
   },
   {
+    id: '5',
     name: 'Invisible Salad',
     ingredients: ',,,'
   },
   {
+    id: '6',
     name: 'Empty Stomach',
     ingredients: ''
   },
   {
+    id: '7',
     name: 'Disneyland Burger with Extra Large Fries',
     ingredients: 'Buns,Meat,Lettuce'
   },
   {
+    id: '8',
     name: 'Coke',
     ingredients: 'Sugar,Water'
   }
 ];
+
+let lastItemID = dummyData.length;
 
 export default class App extends React.Component {
 
@@ -56,23 +67,39 @@ export default class App extends React.Component {
     }
   }
 
-  modifyRecipe = (recipeNum) => {
+  modifyRecipe = (recipeID) => {
     return (newName, newIngredients) => {
-      let recipes = this.state.recipes.slice();
-      recipes[recipeNum] = {
-        name: newName,
-        ingredients: newIngredients
-      };
+      let recipes = this.state.recipes.map(recipe => {
+        if (recipe.id === recipeID) {
+          return {
+            name: newName,
+            ingredients: newIngredients
+          }
+        }
+        return recipe;
+      });
       this.updateRecipes(recipes);
     }
   }
 
-  deleteRecipe = (recipeNum) => {
+  deleteRecipe = (recipeID) => {
     return () => {
-      const { recipes } = this.state;
-      recipes.splice(recipeNum, 1); // remove one recipe at index recipeNum
+      let recipes = this.state.recipes.filter(recipe => {
+        return recipe.id !== recipeID
+      })
       this.updateRecipes(recipes);
     }
+  }
+
+  addRecipe = () => {
+    let newRecipe = {
+      id: lastItemID++,
+      name: '',
+      ingredients: ''
+    };
+    let recipes = this.state.recipes.slice();
+    recipes.splice(0, 0, newRecipe);
+    this.updateRecipes(recipes);
   }
 
   updateRecipes = (recipes) => {
@@ -82,6 +109,7 @@ export default class App extends React.Component {
       window.localStorage.setItem(localStorageName, JSON.stringify(recipes));
     })
   }
+
   render() {
     const { recipes } = this.state;
     return (
@@ -101,20 +129,21 @@ export default class App extends React.Component {
             Click on the item names to expand or collapse.
           </div>
           <div className="col-12 text-center">
-            <button className="btn btn-primary">Add Item</button>
+            <button className="btn btn-primary" onClick={this.addRecipe}>Add Item</button>
           </div>
         </div>
         <hr className="mb-0" />
         <div className="container box">
           <div className="row pt-4">
             {
-              recipes.map((recipe, i) => {
+              recipes.map((recipe) => {
+                const id = recipe.id;
                 return <Recipe
                   {...recipe}
-                  key={i}
-                  recipeKey={i}
-                  modifyRecipe={this.modifyRecipe(i)}
-                  deleteRecipe={this.deleteRecipe(i)}
+                  key={id}
+                  recipeID={id}
+                  modifyRecipe={this.modifyRecipe(id)}
+                  deleteRecipe={this.deleteRecipe(id)}
                 />;
               })
             }

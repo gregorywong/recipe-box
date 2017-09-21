@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RecipeBody = (props) => {
-  const { editing, ingredients, newIngredients, handleIngredientsChange, recipeKey } = props;
+  const { editing, ingredients, newIngredients, handleIngredientsChange, recipeID } = props;
   if (editing) {
     return (
       <ul className='ingredients-list list-group list-group-flush'>
@@ -14,7 +14,7 @@ const RecipeBody = (props) => {
   }
   else {
     return (
-      <ul className='ingredients-list list-group list-group-flush collapse show' id={`recipe${recipeKey}`}>
+      <ul className='ingredients-list list-group list-group-flush collapse show' id={`recipe${recipeID}`}>
         {
           ingredients.trim() === '' &&
           <li className='list-group-item text-danger'>No ingredients!</li>
