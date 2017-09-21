@@ -95,7 +95,12 @@ export default class App extends React.Component {
           <div className="row pt-4">
             {
               recipes.map((recipe, i) => {
-                return <Recipe {...recipe} key={i} recipeKey={i} deleteRecipe={this.deleteRecipe(i)} />;
+                return <Recipe
+                  {...recipe}
+                  key={i}
+                  recipeKey={i}
+                  deleteRecipe={this.deleteRecipe(i)}
+                />;
               })
             }
             {

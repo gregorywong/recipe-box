@@ -37,11 +37,26 @@ export default class Recipe extends React.Component {
     return (
       <div className="col-12 col-xs-6 col-md-4 col-lg-3 pb-4">
         <div className={`card recipe-card ${recipeCardState}`}>
-          <RecipeHeader editing={editing} toggleCollapsed={this.toggleCollapsed} name={name} recipeKey={recipeKey}/>
+          <RecipeHeader
+            editing={editing}
+            toggleCollapsed={this.toggleCollapsed}
+            name={name}
+            newName={newName}
+            recipeKey={recipeKey}
+          />
 
-          <RecipeBody editing={editing} ingredients={ingredients} recipeKey={recipeKey}/>
+          <RecipeBody
+            editing={editing}
+            ingredients={ingredients}
+            recipeKey={recipeKey}
+          />
 
-          <RecipeFooter editing={editing} recipeKey={recipeKey} toggleEditing={this.toggleEditing} deleteRecipe={deleteRecipe}/>
+          <RecipeFooter
+            editing={editing}
+            recipeKey={recipeKey}
+            toggleEditing={this.toggleEditing}
+            deleteRecipe={deleteRecipe}
+          />
 
         </div>
       </div>
