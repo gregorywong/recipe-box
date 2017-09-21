@@ -31,7 +31,16 @@ h1 {
 }
 
 .recipe-card {
-  background-color: #D1AA93!important;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.recipe-card-collapsed {
+  background-color: #D3B3A1!important;
+}
+
+.recipe-card-showing {
+  background-color: #C79479!important;
 }
 
 .recipe-title {

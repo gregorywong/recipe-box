@@ -2,7 +2,7 @@ import React from 'react';
 
 const RecipeHeader = (props) => {
 
-  const {editing, name, recipeKey} = props;
+  const {editing, name, recipeKey, toggleCollapsed} = props;
 
   if (editing) {
     return (
@@ -15,7 +15,7 @@ const RecipeHeader = (props) => {
   }
   else {
     return (
-      <a data-toggle="collapse" href={`#recipe${recipeKey}`} className="text-danger">
+      <a data-toggle="collapse" href={`#recipe${recipeKey}`} className="text-danger" onClick={toggleCollapsed}>
         <div className="card-block">
           <h4 className='text-center p-3 mb-0 recipe-title'>{name}</h4>
         </div>

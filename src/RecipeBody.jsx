@@ -13,7 +13,7 @@ const RecipeBody = (props) => {
   }
   else {
     return (
-      <ul className='ingredients-list list-group list-group-flush collapse' id={`recipe${recipeKey}`}>
+      <ul className='ingredients-list list-group list-group-flush collapse show' id={`recipe${recipeKey}`}>
         {
           ingredients.trim() === '' &&
           <li className='list-group-item text-danger'>No ingredients!</li>
