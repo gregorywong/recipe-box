@@ -8,7 +8,7 @@ const RecipeHeader = (props) => {
     return (
       <div className="card-block">
         <h4 className='text-center p-3 mb-0 recipe-title'>
-          <input type="text" className="form-control p-2 w-100" value={newName} onChange={handleNameChange}/>
+          <textarea className="form-control" rows="1" value={newName} onChange={handleNameChange}/>
         </h4>
       </div>
     )
