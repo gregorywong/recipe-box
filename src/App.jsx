@@ -7,22 +7,18 @@ const localStorageName = "_gregorywong_recipe-box";
 
 let dummyData = [
   {
-    id: 0,
     name: 'Spamburgers',
     ingredients: 'Buns,Spam Meat,Lettuce'
   },
   {
-    id: 1,
     name: 'Invisible Salad',
     ingredients: ',,,'
   },
   {
-    id: 2,
     name: 'Super Mario Salad',
     ingredients: 'Salad,Salad Dressing,Cherry Tomatoes,Pipe Dreams'
   },
   {
-    id: 3,
     name: 'Empty Stomach',
     ingredients: ''
   }
@@ -32,13 +28,25 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    const data = JSON.parse(window.localStorage.getItem(localStorageName));
+    let data = JSON.parse(window.localStorage.getItem(localStorageName));
+    if (data === null) {
+      data = dummyData;
+    }
+
+    // reset recipeIDs
+    data = data.map((recipe, i) => {
+      return Object.assign(
+        {},
+        recipe,
+        { id : i }
+      );
+    })
+
     this.state = {
-      recipes: (data !== null) ? data : dummyData
+      recipes: data
     }
     this.lastItemID = this.state.recipes.length;
   }
-
 
   modifyRecipe = (recipeID) => {
     return (newName, newIngredients) => {
