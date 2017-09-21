@@ -59,7 +59,7 @@ export default class App extends React.Component {
         </header>
         <div className="row justify-content-center">
           <div className="col-12 text-center pb-2">
-            Click on the item names to expand!
+            Click on the item names to expand or collapse.
           </div>
           <div className="col-12 text-center">
             <button className="btn btn-primary">Add Item</button>
