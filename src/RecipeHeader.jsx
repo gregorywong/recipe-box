@@ -2,13 +2,13 @@ import React from 'react';
 
 const RecipeHeader = (props) => {
 
-  const {editing, name, recipeKey, toggleCollapsed} = props;
+  const {editing, name, newName, recipeKey, toggleCollapsed, handleNameChange} = props;
 
   if (editing) {
     return (
       <div className="card-block">
         <h4 className='text-center p-3 mb-0 recipe-title'>
-          <input type="text" className="p-2 w-100" value={name} />
+          <input type="text" className="p-2 w-100" value={newName} onChange={handleNameChange}/>
         </h4>
       </div>
     )

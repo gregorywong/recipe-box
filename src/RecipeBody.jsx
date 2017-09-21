@@ -1,12 +1,12 @@
 import React from 'react';
 
 const RecipeBody = (props) => {
-  const { editing, ingredients, recipeKey } = props;
+  const { editing, ingredients, newIngredients, handleIngredientsChange, recipeKey } = props;
   if (editing) {
     return (
       <ul className='ingredients-list list-group list-group-flush'>
         <li className='list-group-item'>
-          <input type="text" className="p-2 w-100" value={ingredients} />
+          <input type="text" className="p-2 w-100" value={newIngredients} onChange={handleIngredientsChange}/>
         </li>
       </ul>
     )

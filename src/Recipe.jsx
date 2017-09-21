@@ -41,6 +41,18 @@ export default class Recipe extends React.Component {
     })
   }
 
+  handleNameChange = (e) => {
+    this.setState({
+      newName: e.target.value
+    })
+  }
+
+  handleIngredientsChange = (e) => {
+    this.setState({
+      newIngredients: e.target.value
+    })
+  }
+
   render() {
     const { name, ingredients, recipeKey, modifyRecipe, deleteRecipe } = this.props;
     const {editing, collapsed, newName, newIngredients} = this.state;
@@ -53,12 +65,15 @@ export default class Recipe extends React.Component {
             toggleCollapsed={this.toggleCollapsed}
             name={name}
             newName={newName}
+            handleNameChange={this.handleNameChange}
             recipeKey={recipeKey}
           />
 
           <RecipeBody
             editing={editing}
             ingredients={ingredients}
+            newIngredients={newIngredients}
+            handleIngredientsChange={this.handleIngredientsChange}
             recipeKey={recipeKey}
           />
 
