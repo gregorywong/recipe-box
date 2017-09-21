@@ -7,22 +7,22 @@ const localStorageName = "_gregorywong_recipe-box";
 
 let dummyData = [
   {
-    id: '0',
+    id: 0,
     name: 'Spamburgers',
     ingredients: 'Buns,Spam Meat,Lettuce'
   },
   {
-    id: '1',
+    id: 1,
     name: 'Invisible Salad',
     ingredients: ',,,'
   },
   {
-    id: '2',
+    id: 2,
     name: 'Super Mario Salad',
     ingredients: 'Salad,Salad Dressing,Cherry Tomatoes,Pipe Dreams'
   },
   {
-    id: '3',
+    id: 3,
     name: 'Empty Stomach',
     ingredients: ''
   }
@@ -46,10 +46,14 @@ export default class App extends React.Component {
     return (newName, newIngredients) => {
       let recipes = this.state.recipes.map(recipe => {
         if (recipe.id === recipeID) {
-          return {
-            name: newName,
-            ingredients: newIngredients
-          }
+          return Object.assign(
+            {},
+            recipe,
+            {
+              name: newName,
+              ingredients: newIngredients
+            }
+          );
         }
         return recipe;
       });
