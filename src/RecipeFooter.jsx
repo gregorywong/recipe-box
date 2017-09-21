@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RecipeFooter = (props) => {
-  const {editing} = props;
+  const {editing, toggleEditing} = props;
   return (
     <ul className='ingredients-list list-group list-group-flush' >
       <li className='list-group-item'>
@@ -9,7 +9,7 @@ const RecipeFooter = (props) => {
           !editing &&
           <div className="row">
             <div className="col-6 text-center">
-              <button className="btn btn-warning">Edit</button>
+              <button className="btn btn-warning" onClick={toggleEditing}>Edit</button>
             </div>
             <div className="col-6 text-center">
               <button className="btn btn-danger">Delete</button>
@@ -23,7 +23,7 @@ const RecipeFooter = (props) => {
               <button className="btn btn-success">Save</button>
             </div>
             <div className="col-6 text-center">
-              <button className="btn btn-danger">Cancel</button>
+              <button className="btn btn-danger" onClick={toggleEditing}>Cancel</button>
             </div>
           </div>
         }

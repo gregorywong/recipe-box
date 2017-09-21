@@ -14,6 +14,12 @@ export default class Recipe extends React.Component {
     }
   }
 
+  toggleEditing = () => {
+    this.setState({
+      editing: !this.state.editing
+    })
+  }
+
   render() {
     const { name, ingredients, recipeKey } = this.props;
     const {editing, newName, newIngredients} = this.state;
@@ -24,7 +30,7 @@ export default class Recipe extends React.Component {
 
           <RecipeBody editing={editing} ingredients={ingredients} recipeKey={recipeKey}/>
 
-          <RecipeFooter editing={editing} recipeKey={recipeKey}/>
+          <RecipeFooter editing={editing} recipeKey={recipeKey} toggleEditing={this.toggleEditing}/>
 
         </div>
       </div>
