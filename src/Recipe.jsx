@@ -53,8 +53,19 @@ export default class Recipe extends React.Component {
     })
   }
 
+  handleSaveClicked = () => {
+    const {newName, newIngredients} = this.state;
+    const {modifyRecipe} = this.props;
+    this.setState({
+      editing: false,
+      collapsed: defaultCollapsed
+    }, () => {
+      modifyRecipe(newName, newIngredients);
+    });
+  }
+
   render() {
-    const { name, ingredients, recipeKey, modifyRecipe, deleteRecipe } = this.props;
+    const { name, ingredients, recipeKey, deleteRecipe } = this.props;
     const {editing, collapsed, newName, newIngredients} = this.state;
     const recipeCardState = collapsed ? 'recipe-card-collapsed' : 'recipe-card-showing';
     return (
@@ -82,6 +93,7 @@ export default class Recipe extends React.Component {
             recipeKey={recipeKey}
             startEditing={this.startEditing}
             cancelEditing={this.cancelEditing}
+            handleSaveClicked={this.handleSaveClicked}
             deleteRecipe={deleteRecipe}
           />
 

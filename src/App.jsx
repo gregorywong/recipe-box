@@ -58,7 +58,7 @@ export default class App extends React.Component {
 
   modifyRecipe = (recipeNum) => {
     return (newName, newIngredients) => {
-      recipes = this.state.recipes.slice();
+      let recipes = this.state.recipes.slice();
       recipes[recipeNum] = {
         name: newName,
         ingredients: newIngredients
