@@ -6,7 +6,7 @@ const RecipeBody = (props) => {
     return (
       <ul className='ingredients-list list-group list-group-flush'>
         <li className='list-group-item'>
-          <input type="text" className="p-2 w-100" value={newIngredients} onChange={handleIngredientsChange}/>
+          <textarea className="form-control p-2 w-100" rows="4" value={newIngredients} onChange={handleIngredientsChange}/>
         </li>
       </ul>
     )
