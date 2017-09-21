@@ -58,6 +58,9 @@ export default class App extends React.Component {
           </div>
         </header>
         <div className="row justify-content-center">
+          <div className="col-12 text-center pb-2">
+            Click on the item names to expand!
+          </div>
           <div className="col-12 text-center">
             <button className="btn btn-primary">Add Item</button>
           </div>
