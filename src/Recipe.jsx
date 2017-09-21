@@ -31,7 +31,7 @@ export default class Recipe extends React.Component {
   }
 
   render() {
-    const { name, ingredients, recipeKey } = this.props;
+    const { name, ingredients, recipeKey, deleteRecipe } = this.props;
     const {editing, collapsed, newName, newIngredients} = this.state;
     const recipeCardState = collapsed ? 'recipe-card-collapsed' : 'recipe-card-showing';
     return (
@@ -41,7 +41,7 @@ export default class Recipe extends React.Component {
 
           <RecipeBody editing={editing} ingredients={ingredients} recipeKey={recipeKey}/>
 
-          <RecipeFooter editing={editing} recipeKey={recipeKey} toggleEditing={this.toggleEditing}/>
+          <RecipeFooter editing={editing} recipeKey={recipeKey} toggleEditing={this.toggleEditing} deleteRecipe={deleteRecipe}/>
 
         </div>
       </div>

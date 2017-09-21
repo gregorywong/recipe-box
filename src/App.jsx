@@ -3,7 +3,7 @@ import Recipe from './Recipe.jsx';
 
 const image = require('./images/hat.svg');
 
-const fakeLocalStorage = [
+var fakeLocalStorage = [
   {
     name: 'Hamburgers',
     ingredients: 'Buns,Meat,Lettuce'
@@ -44,7 +44,28 @@ const fakeLocalStorage = [
 
 export default class App extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipes: fakeLocalStorage
+    }
+  }
+
+  deleteRecipe = (recipeNum) => {
+    return () => {
+      const { recipes } = this.state;
+      recipes.splice(recipeNum, 1); // remove one recipe at index recipeNum
+      this.setState({
+        recipes
+      }, () => {
+        fakeLocalStorage = recipes;
+        console.log(fakeLocalStorage)
+      })
+    }
+  }
+
   render() {
+    const {recipes} = this.state;
     return (
       <div>
         <header className="text-center py-1">
@@ -69,8 +90,8 @@ export default class App extends React.Component {
         <div className="container box">
           <div className="row pt-4">
             {
-              fakeLocalStorage.map((recipe, i) => {
-                return <Recipe {...recipe} key={i} recipeKey={i}/>;
+              recipes.map((recipe, i) => {
+                return <Recipe {...recipe} key={i} recipeKey={i} deleteRecipe={this.deleteRecipe(i)} />;
               })
             }
           </div>
