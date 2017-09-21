@@ -1,5 +1,7 @@
 # recipe-box
-A recipe box created for FreeCodeCamp.
+A recipe box created for FreeCodeCamp. Utilizes local storage.
+
+A working version can be found here: https://gregorywong.github.io/recipe-box/
 
 
 ## How to use the files?
