@@ -28,19 +28,17 @@ let dummyData = [
   }
 ];
 
-let lastItemID = dummyData.length;
-
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
     const data = JSON.parse(window.localStorage.getItem(localStorageName));
     this.state = {
-      // recipes: (data !== null) ? data : dummyData
-      // testing:
-      recipes: dummyData
+      recipes: (data !== null) ? data : dummyData
     }
+    this.lastItemID = this.state.recipes.length;
   }
+
 
   modifyRecipe = (recipeID) => {
     return (newName, newIngredients) => {
@@ -72,7 +70,7 @@ export default class App extends React.Component {
 
   addRecipe = () => {
     let newRecipe = {
-      id: lastItemID++,
+      id: this.lastItemID++,
       name: '',
       ingredients: ''
     };
