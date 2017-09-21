@@ -55,10 +55,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Recipe Box',
-      /*
       minify: {
           collapseWhitespace: true
       },
+      /*
       hash: true,
       */
       template: './src/index.ejs', // Load a custom template (ejs by default see the FAQ for details)
